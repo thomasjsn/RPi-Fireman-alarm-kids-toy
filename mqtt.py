@@ -100,11 +100,11 @@ def boot_sequence():
     time.sleep(0.5)
     set_output(greenLamp, False)
 
-    for i in range(2):
-        set_output(buzzer, True)
-        time.sleep(0.05)
-        set_output(buzzer, False)
-        time.sleep(0.05)
+    #for i in range(2):
+    #    set_output(buzzer, True)
+    #    time.sleep(0.05)
+    #    set_output(buzzer, False)
+    #    time.sleep(0.05)
 
 
 def shutdown_sequence():
@@ -190,9 +190,9 @@ while True:
             set_output(greenLamp, True)
 
         time.sleep(10)
-        set_output(buzzer, True)
-        time.sleep(0.1)
-        set_output(buzzer, False)
+        #set_output(buzzer, True)
+        #time.sleep(0.1)
+        #set_output(buzzer, False)
 
         set_output(redLamp, False)
         set_output(greenLamp, False)
