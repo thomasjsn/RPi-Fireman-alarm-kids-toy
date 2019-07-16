@@ -42,6 +42,12 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("node/gzl/+/+")
     client.subscribe("state/kids/top_bunk")
 
+    if rc==0:
+        client.connected_flag=True
+        client.publish("$CONNECTED/gzl", 1, retain=True)
+    else:
+        client.bad_connection_flag=True
+
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
@@ -141,7 +147,8 @@ start_time = time.time()
 client = mqtt.Client('gzl')
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("192.168.1.119", 1883, 60)
+client.will_set("$CONNECTED/gzl", 0, qos=0, retain=True)
+client.connect("mqtt.lan.uctrl.net")
 client.loop_start()
 
 while True:
